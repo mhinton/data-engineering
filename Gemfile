@@ -59,9 +59,10 @@ group :development, :test do
 end
 
 group :test do
+  gem 'shoulda'
   gem 'faker'
   gem 'capybara', '~> 2.2.1'
   gem 'database_cleaner'
-  gem 'launchy'
-  gem 'selenium-webdriver'
+  # gem 'launchy'
+  # gem 'selenium-webdriver'
 end
