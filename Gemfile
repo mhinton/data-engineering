@@ -43,3 +43,16 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+group :development do
+  gem 'binding_of_caller'
+  gem 'better_errors'
+  gem 'hirb'
+  gem 'awesome_print'
+  gem 'byebug'
+  gem 'pry-rails'
+end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 2.14.2'
+end
