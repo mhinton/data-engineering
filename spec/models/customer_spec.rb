@@ -7,6 +7,7 @@ describe Customer do
 
   context "is valid" do
     it "with a name" do
+      expect(@customer.name.blank?).to eq false
       expect(@customer.valid?).to eq true
     end
   end
