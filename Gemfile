@@ -55,4 +55,13 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.14.2'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'faker'
+  gem 'capybara', '~> 2.2.1'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'selenium-webdriver'
 end
