@@ -1,5 +1,28 @@
 == README
 
+=== Data Model: ===
+Customer
+  Name
+
+Merchant
+  Address
+  Name
+
+Item
+  merchant_id
+  Description
+  Price
+
+Order
+  item_id
+  customer_id
+  Quantity
+
+
+
+
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
