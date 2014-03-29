@@ -21,7 +21,7 @@ describe DataFilesController do
     it "creates a new DataFile" do
       data_file_attributes = attributes_for(:data_file)
       post :create, data_file: data_file_attributes
-      expect(response).to redirect_to(root_path)
+      expect(response).to redirect_to(data_files_path)
     end
   end
 
