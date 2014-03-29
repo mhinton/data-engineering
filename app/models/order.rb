@@ -1,6 +1,7 @@
 class Order < ActiveRecord::Base
-  belongs_to :item
-  belongs_to :customer
-  validates :item_id, :customer_id, :quantity, presence: true
+  belongs_to :item, inverse_of: :orders
+  belongs_to :customer, inverse_of: :orders
+  belongs_to :merchant, inverse_of: :orders
+  validates :item_id, :customer_id, :merchant_id, :quantity, presence: true
   validates :quantity, :numericality => {greater_than: 0}
 end
