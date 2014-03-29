@@ -2,11 +2,11 @@ LSDataImport::Application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  post "data_import/upload" => "data_import#upload"
+  resource :data_files
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root "data_import#index"
+  root "data_import#new"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
