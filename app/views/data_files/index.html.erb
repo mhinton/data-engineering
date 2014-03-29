@@ -2,11 +2,16 @@
 
 <div>
 
-  <%= form_tag({action: :upload}, multipart: true) do %>
-    <%= label_tag 'import' do %>
-      Import Data File:
-      <%= file_field_tag 'import' %>
-    <% end %><br/>
-    <%= button_tag 'Submit' %>
-  <% end %>
+  <table>
+    <thead>
+      <tr>
+        <td>File Name</td>
+        <td>File Size</td>
+        <td>Upload Date</td>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: 'data_file_entry', collection: @data_files %>
+    </tbody>
+  </table>
 </div>
