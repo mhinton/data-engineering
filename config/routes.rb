@@ -6,7 +6,7 @@ LSDataImport::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root "data_import#new"
+  root "data_files#new"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
