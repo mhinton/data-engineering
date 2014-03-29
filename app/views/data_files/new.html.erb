@@ -1,0 +1,12 @@
+<h1>Living Social Data Import</h1>
+
+<div>
+
+  <%= form_for @data_file do |f| %>
+    <%= f.label :upload do %>
+      Import Data File:
+      <%= f.file_field :upload %>
+    <% end %><br />
+    <%= f.submit 'Submit' %>
+  <% end %>
+</div>
