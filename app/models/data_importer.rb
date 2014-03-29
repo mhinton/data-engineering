@@ -1,8 +1,7 @@
 require 'csv'
 
-class ImportError < StandardError
-  # raise ImportError, "A custom message"
-end
+# throw this error whenever we run into an issue with the uploaded data file
+class ImportError < StandardError; end
 
 class DataImporter
   attr_reader :file_path
