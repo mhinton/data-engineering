@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe DataImportController do
+describe DataFilesController do
 
   describe "GET 'index'" do
     it "returns http success" do
