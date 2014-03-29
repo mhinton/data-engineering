@@ -8,8 +8,12 @@ require 'spec_helper'
 # Snake Plissken	$20 Sneakers for $5	5.0	4	123 Fake St	Sneaker Store Emporium
 
 describe DataImporter do
-  it "sets the input file path correctly" do
+  before :each do
     @test_file_path = "#{Rails.root}/spec/support/fixtures/example_input.tab"
+    @test_bad_file_path = "#{Rails.root}/spec/support/fixtures/example_bad_input.tab"
+  end
+
+  it "sets the input file path correctly" do
     @data_importer = DataImporter.new(@test_file_path)
     expect(@data_importer.file_path).to eq @test_file_path
   end
@@ -19,5 +23,36 @@ describe DataImporter do
     expect {
       @data_importer = DataImporter.new(@test_file_path)
     }.to raise_error(ImportError)
+  end
+
+  it "raises ImportError when import file contains and empty line" do
+    expect {
+      @data_importer = DataImporter.new(@test_bad_file_path)
+      @data_importer.process
+    }.to raise_error(ImportError)
+  end
+
+  it "creates 3 customers from input file" do
+    @data_importer = DataImporter.new(@test_file_path)
+    @data_importer.process
+    expect(Customer.count).to eq 3
+  end
+
+  it "creates 3 merchants from input file" do
+    @data_importer = DataImporter.new(@test_file_path)
+    @data_importer.process
+    expect(Merchant.count).to eq 3
+  end
+
+  it "creates 3 items from input file" do
+    @data_importer = DataImporter.new(@test_file_path)
+    @data_importer.process
+    expect(Item.count).to eq 3
+  end
+
+  it "creates 3 orders from input file" do
+    @data_importer = DataImporter.new(@test_file_path)
+    @data_importer.process
+    expect(Order.count).to eq 4
   end
 end
