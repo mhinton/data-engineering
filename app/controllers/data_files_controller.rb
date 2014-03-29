@@ -8,8 +8,13 @@ class DataFilesController < ApplicationController
   end
 
   def create
-    data_file = DataFile.new(data_file_params)
-    redirect_to root_path, :notice => "File uploaded successfully"
+    data_file = DataFile.create(data_file_params)
+
+    respond_to do |format|
+      format.html {
+        redirect_to(data_files_path, :notice => 'File uploaded successfully')
+      }
+    end
   end
 
   private
