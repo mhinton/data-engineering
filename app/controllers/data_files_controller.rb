@@ -8,12 +8,18 @@ class DataFilesController < ApplicationController
   end
 
   def create
-    data_file = DataFile.create(data_file_params)
+    @data_file = DataFile.new(data_file_params)
 
-    respond_to do |format|
-      format.html {
-        redirect_to(data_files_path, :notice => 'File uploaded successfully')
-      }
+    if @data_file.save
+      begin
+        DataImporter.new(@data_file.upload.path).process
+      rescue ImportError => e
+        render "new", :error => "File Import Failed: #{e.message}"
+      end
+
+      redirect_to(data_files_path, :notice => 'File Uploaded Successfully')
+    else
+      render "new"
     end
   end
 
