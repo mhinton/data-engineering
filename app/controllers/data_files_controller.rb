@@ -1,5 +1,6 @@
 class DataFilesController < ApplicationController
   def index
+    @data_files = DataFile.order(:created_at).to_a
   end
 
   def new
@@ -8,7 +9,7 @@ class DataFilesController < ApplicationController
 
   def create
     data_file = DataFile.new(data_file_params)
-    raise 'hell'
+    redirect_to root_path, :notice => "File uploaded successfully"
   end
 
   private
