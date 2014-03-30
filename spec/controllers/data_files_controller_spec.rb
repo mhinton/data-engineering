@@ -19,9 +19,23 @@ describe DataFilesController do
 
   describe "POST 'create'" do
     it "creates a new DataFile" do
-      data_file_attributes = attributes_for(:data_file)
+      data_file_attributes = attributes_for(:good_data_file)
+      expect {
+        post :create, data_file: data_file_attributes
+      }.to change(DataFile, :count).by 1
+    end
+
+    it "redirects to the revenue page" do
+      data_file_attributes = attributes_for(:good_data_file)
       post :create, data_file: data_file_attributes
-      expect(response).to redirect_to(data_files_path)
+      @data_file = DataFile.last
+      expect(response).to redirect_to(revenue_data_file_path(@data_file))
+    end
+
+    it "renders 'new' for a bad data file" do
+      data_file_attributes = attributes_for(:bad_data_file)
+      post :create, data_file: data_file_attributes
+      expect(response).to render_template :new
     end
   end
 

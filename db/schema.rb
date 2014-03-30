@@ -50,13 +50,13 @@ ActiveRecord::Schema.define(version: 20140330154656) do
   add_index "merchants", ["name"], name: "index_merchants_on_name"
 
   create_table "orders", force: true do |t|
-    t.integer  "item_id",      null: false
-    t.integer  "customer_id",  null: false
-    t.integer  "quantity",     null: false
+    t.integer  "item_id",                  null: false
+    t.integer  "customer_id",              null: false
+    t.integer  "quantity",                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "merchant_id"
-    t.integer  "data_file_id"
+    t.integer  "merchant_id",  default: 0, null: false
+    t.integer  "data_file_id", default: 0, null: false
   end
 
   add_index "orders", ["customer_id"], name: "index_orders_on_customer_id"

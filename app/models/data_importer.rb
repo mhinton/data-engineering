@@ -14,7 +14,7 @@ class DataImporter
   def process
     ActiveRecord::Base.transaction do
       CSV.foreach(@data_file.upload.path, col_sep: "\t", headers: true, return_headers: false) do |row|
-        raise ImportError, "File row is empty: #{row.inspect}" if row.empty?
+        raise ImportError, "File has an empty row" if row.empty?
 
         customer = Customer.find_or_create_by(name: row["purchaser name"])
         merchant = Merchant.find_or_create_by(name: row["merchant name"], address: row["merchant address"])

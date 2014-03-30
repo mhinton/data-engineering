@@ -9,18 +9,23 @@ class DataFilesController < ApplicationController
 
   def create
     @data_file = DataFile.new(data_file_params)
-
     if @data_file.save
       begin
-        DataImporter.new(@data_file.upload.path).process
+        DataImporter.new(@data_file).process
       rescue ImportError => e
-        render "new", :error => "File Import Failed: #{e.message}"
+        flash[:error] = "File import failed: #{e.message}"
+        return render "new"
       end
 
-      redirect_to(data_files_path, :notice => 'File Uploaded Successfully')
+      redirect_to(revenue_data_file_path(@data_file), :notice => 'File uploaded successfully')
     else
-      render "new"
+      return render "new", :error => "File format is incorrect"
     end
+  end
+
+  def revenue
+    @data_file = DataFile.find(params[:id])
+    @total_revenue = RevenueCalculator.new(@data_file).total_revenue
   end
 
   private
