@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Item do
   subject { build_stubbed(:item) }
+  it { should belong_to :merchant }
+  it { should have_many(:orders) }
   it { should validate_presence_of(:merchant_id) }
   it { should validate_presence_of(:description) }
   it { should validate_presence_of(:price) }
