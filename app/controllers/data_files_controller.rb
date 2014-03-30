@@ -14,12 +14,13 @@ class DataFilesController < ApplicationController
         DataImporter.new(@data_file).process
       rescue ImportError => e
         flash[:error] = "File import failed: #{e.message}"
-        return render "new"
+        return redirect_to new_data_file_path
       end
 
       redirect_to(revenue_data_file_path(@data_file), :notice => 'File uploaded successfully')
     else
-      return render "new", :error => "File format is incorrect"
+      flash[:error] = "File import failed: #{e.message}"
+      return redirect_to new_data_file_path
     end
   end
 

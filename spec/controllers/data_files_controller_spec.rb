@@ -35,7 +35,7 @@ describe DataFilesController do
     it "renders 'new' for a bad data file" do
       data_file_attributes = attributes_for(:bad_data_file)
       post :create, data_file: data_file_attributes
-      expect(response).to render_template :new
+      expect(response).to redirect_to(new_data_file_path)
     end
   end
 
