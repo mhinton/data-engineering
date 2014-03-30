@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140329204514) do
+ActiveRecord::Schema.define(version: 20140330154656) do
 
   create_table "customers", force: true do |t|
     t.string   "name"
@@ -50,15 +50,17 @@ ActiveRecord::Schema.define(version: 20140329204514) do
   add_index "merchants", ["name"], name: "index_merchants_on_name"
 
   create_table "orders", force: true do |t|
-    t.integer  "item_id",     null: false
-    t.integer  "customer_id", null: false
-    t.integer  "quantity",    null: false
+    t.integer  "item_id",      null: false
+    t.integer  "customer_id",  null: false
+    t.integer  "quantity",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "merchant_id"
+    t.integer  "data_file_id"
   end
 
   add_index "orders", ["customer_id"], name: "index_orders_on_customer_id"
+  add_index "orders", ["data_file_id"], name: "index_orders_on_data_file_id"
   add_index "orders", ["item_id"], name: "index_orders_on_item_id"
   add_index "orders", ["merchant_id"], name: "index_orders_on_merchant_id"
 
