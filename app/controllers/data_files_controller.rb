@@ -24,8 +24,8 @@ class DataFilesController < ApplicationController
   end
 
   def revenue
-    @data_file = DataFile.find(params[:id])
-    @total_revenue = RevenueCalculator.new(@data_file).total_revenue
+    data_file = DataFile.includes(:orders).find(params[:id])
+    @total_revenue = RevenueCalculator.total_revenue(data_file.orders)
   end
 
   private
