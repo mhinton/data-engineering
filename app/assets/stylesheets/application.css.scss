@@ -12,9 +12,7 @@
  *= require_tree .
  */
 
-table {
-  width: 80%;
-}
+@import "bootstrap";
 
 .flash_notice, .flash_error {
   padding: 8px 35px 8px 14px;

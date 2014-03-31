@@ -1,12 +1,15 @@
 <h1>Living Social Data Import</h1>
 
 <div>
-
   <%= form_for @data_file do |f| %>
     <%= f.label :upload do %>
       Import Data File:
       <%= f.file_field :upload %>
     <% end %><br />
-    <%= f.submit 'Submit' %>
+    <%= f.submit 'Submit', class: "btn btn-primary" %>
   <% end %>
+</div><br/>
+
+<div>
+  <p><%= link_to 'View File Imports', data_files_path %></p>
 </div>
