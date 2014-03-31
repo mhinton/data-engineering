@@ -2,6 +2,12 @@ require 'spec_helper'
 
 describe DataFilesController do
 
+  before :each do
+    @user = build(:user)
+    @user.save!
+    sign_in @user
+  end
+
   describe "GET 'index'" do
     it "returns http success" do
       get :index

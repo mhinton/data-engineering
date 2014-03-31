@@ -27,7 +27,10 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# Project dependencies
 gem 'paperclip', '~> 4.1.1'
+gem 'devise', '~> 3.2.4'
+gem 'bootstrap-sass', '~> 3.0.3'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -65,6 +68,4 @@ group :test do
   gem 'faker'
   gem 'capybara', '~> 2.2.1'
   gem 'database_cleaner'
-  # gem 'launchy'
-  # gem 'selenium-webdriver'
 end
